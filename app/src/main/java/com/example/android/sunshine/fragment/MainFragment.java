@@ -9,8 +9,20 @@ import android.view.ViewGroup;
 
 import com.example.android.sunshine.R;
 
+import java.util.Arrays;
+import java.util.List;
+
 
 public class MainFragment extends Fragment {
+
+    private List<String> forecastItems = Arrays.asList(
+            "Today - Sunny - 88 / 63",
+            "Tomorrow - Foggy - 70 / 46",
+            "Weds - Cloudy - 72 / 63",
+            "Thurs - Rainy - 64 / 51",
+            "Fri - Foggy - 70 / 46",
+            "Sat - Sunny - 76 / 68"
+    );
 
     @Nullable
     @Override
