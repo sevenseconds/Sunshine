@@ -2,4 +2,9 @@
     <string name="app_name">Sunshine</string>
     <string name="action_refresh" translatable="false">Refresh</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_detail">Detail</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="pref_location_label">Location</string>
+    <string name="pref_location_default" translatable="false">Bangkok</string>
+    <string name="pref_location_key" translatable="false">location</string>
 </resources>

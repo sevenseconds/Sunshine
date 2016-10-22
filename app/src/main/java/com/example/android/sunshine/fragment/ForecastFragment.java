@@ -1,5 +1,6 @@
 package com.example.android.sunshine.fragment;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ import android.widget.Toast;
 
 import com.example.android.sunshine.BuildConfig;
 import com.example.android.sunshine.R;
+import com.example.android.sunshine.activity.DetailActivity;
+import com.example.android.sunshine.activity.SettingsActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,12 +61,20 @@ public class ForecastFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
-            FetchWeatherAsyncTask weatherTask = new FetchWeatherAsyncTask();
-            weatherTask.execute("94043");
+            fetchWeatherData();
+            return true;
+        } else if (id == R.id.action_settings) {
+            Intent intent = new Intent(getActivity(), SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void fetchWeatherData() {
+        FetchWeatherAsyncTask weatherTask = new FetchWeatherAsyncTask();
+        weatherTask.execute("94043");
     }
 
     @Nullable
@@ -79,10 +90,13 @@ public class ForecastFragment extends Fragment {
         forecastListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getActivity(), forecastAdapter.getItem(i), Toast.LENGTH_SHORT).show();
+                String dayForecast = forecastAdapter.getItem(i);
+                Intent intent = new Intent(getActivity(), DetailActivity.class);
+                intent.putExtra(Intent.EXTRA_TEXT, dayForecast);
+                startActivity(intent);
             }
         });
-
+        fetchWeatherData();
         return rootView;
     }
 
