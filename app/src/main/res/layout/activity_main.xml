@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/fragment_main"
-        android:name="com.example.android.sunshine.fragment.MainFragment"
+        android:name="com.example.android.sunshine.fragment.ForecastFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </RelativeLayout>
